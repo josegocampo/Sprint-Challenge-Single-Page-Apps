@@ -29,6 +29,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 > Answer:
 
+Whole page wont refresh, only some elements inside the app will change, so less data is processed and routing between views is faster. 
+
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
