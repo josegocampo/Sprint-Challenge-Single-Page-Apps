@@ -1,3 +1,23 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -27,13 +47,19 @@ main {
 .grid-view div.card.ui {
   margin: 1.25rem;
 }
-/*
+
 .main-img {
   display: block;
   border-radius: 100%;
   margin: 0 auto;
-} */
+}
 
-header h1 {
+h1 {
   text-align: center;
 }
+
+h3 {
+  text-align: center;
+}
+
+
