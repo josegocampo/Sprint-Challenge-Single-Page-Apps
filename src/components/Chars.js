@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 
+
+
+const IND = styled.div`
+border: 1px solid black;
+width: 350px;
+margin: 0 auto;
+margin-top: 70px;
+background: lightgrey;
+`
 
 
 
@@ -16,30 +26,30 @@ const Chars = (props)  => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
-    .get(`https://rickandmortyapi.com/api/character/`)
+    .get(`https://rickandmortyapi.com/api/character/${id}`)
     .then(response => { 
-        setChars(response.data.results);
+        setChars(response.data);
         
     })
     .catch(error => {
      console.log(`The error was: ${error}`) 
     })
-  }, []);
+  }, [id]);
 
 console.log(chars.name);
   return (
-    <div className="save-wrapper">
-      <div className="movie-card">
+    <IND>
+      <div className="char-card">
         <h2>{chars.name}</h2>
-        <div className="movie-director">
-          Director: <em>{chars.status}</em>
+        <img src={chars.image}  alt= "" className = 'main-img' />
+        <div className="char-status">
+          Status: <em>{chars.status}</em>
         </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{chars.species}</strong>
+        <div className="char-species">
+          Race: <strong>{chars.species}</strong>
         </div>
       </div>
-      <div className="save-button">Save</div>
-    </div>
+    </IND>
   );
 }
 

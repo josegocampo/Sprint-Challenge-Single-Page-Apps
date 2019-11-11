@@ -3,12 +3,19 @@ import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import Header from "./Header"
 import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm"
 
 
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
-  const [char, setChar] = useState ([]);
+  const [data, setData] = useState ([]);
+
+  
+  const search = charArr => {
+    setData(charArr)
+    
+};
   
 
   useEffect(() => {
@@ -17,7 +24,8 @@ export default function CharacterList() {
     axios
     .get(`https://rickandmortyapi.com/api/character/`)
     .then(response => { 
-        setChar(response.data.results);
+    
+        setData(response.data.results);
         
     })
     .catch(error => {
@@ -31,35 +39,16 @@ export default function CharacterList() {
       <div className="movie-list">
 
           <Header/>
+          <SearchForm search={search} characters={data} />
 
-        {char.map(char => (
 
+        {data.map(char => (
          <Link to={`/chars/${char.id}`}>
-  
-        <CharacterCard name = {char.name} img = {char.image} />
-
-        </Link>
+          <CharacterCard name = {char.name} img = {char.image} />
+         </Link>
        
         ))}
       </div>
   );
 
 }
-
-// function CharDetails({ char }) {
-//   const { name, status, species, gender = [] } = char;
-//   return (
- 
-//       <div className="movie-card">
-//         <h2>{name}</h2>
-//         <div className="movie-director">
-//           Director: <em>{status}</em>
-//         </div>
-//         <div className="movie-metascore">
-//           Metascore: <strong>{species}</strong>
-//         </div>
-//       </div>
-  
-//   );
-// }
-
